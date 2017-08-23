@@ -5,9 +5,12 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 /**
  *
@@ -15,6 +18,9 @@ import java.io.IOException;
  */
 public class Utility
 {
+    /*
+    * Funzione che scrive un JsonObject su un file
+    */
     public static void writeJsonToFs(JsonObject j, String path) throws IOException
     {
         
@@ -60,6 +66,48 @@ public class Utility
             return null;
         }
         
-        
+    }
+    
+    /*
+    * Funzione che elimina una cartella col suo contenuto
+    */
+    public static void deleteDir(File file) 
+    {
+        File[] contents = file.listFiles();
+        if (contents != null) 
+        {
+            for (File f : contents) 
+            {
+                deleteDir(f);
+            }
+        }
+        file.delete();
+    }
+    
+    /*
+    * Funzione che ricava una stringa dopo un carattere specificato
+    */
+    public static String getStringAfterLastChar(String s, String c)
+    {
+         return s.substring(s.lastIndexOf(c) + 1);
+    }
+    
+    /*
+    * Funzione che Capitalizza la prima lettera di una parola
+    */
+    public static String capitalizeFirstLetter(String input)
+    {
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
+    }
+    
+    /*
+    * Funzione utilizzata per creare il file .java
+    */
+    public static void creaFileJava(String nomeClasse, String source, String path) throws Exception
+    {
+        File root = new File(path);
+        File sourceFile = new File(root, "/"+nomeClasse+".java");
+        sourceFile.getParentFile().mkdirs();
+        Files.write(sourceFile.toPath(), source.getBytes(StandardCharsets.UTF_8));
     }
 }

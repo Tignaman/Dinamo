@@ -62,10 +62,6 @@ public class QueryCore<T,K,V>
             {
                 prepStm.setObject(i+1,l.get(i));
             }
-            /*for(T obj : l)
-            {
-                prepStm.setObject(l.indexOf(obj) + 1, obj);
-            }*/
         }
         return this;
     }

@@ -90,5 +90,59 @@ public class ConfigName
     */
     public static final String CONFIG_MODEL = "ModelConfiguration.json";
     
+    /*
+    *
+    *Nome cartella dei file di configurazione
+    *
+    */
+    public static final String CONFIG_DIR = "DinamoConfig";
+    
+    /*
+    *
+    *Path delle Model
+    *
+    */
+    public static final String MODEL_PATH= "ModelPath";
+    
+    /*
+    *
+    *Nome cartella delle model
+    *
+    */
+    public static final String MODEL_DIR= "DinamoModel";
+    
+    
+    /*
+    *
+    *Nome cartella delle model
+    *
+    */
+    public static final String IGNORE_TABLES= "IgnoreTables";
+    
+    /*
+    *
+    *Nome del package Annotazioni
+    *
+    */
+    public static final String ANNOTAZIONI= "Annotazioni";
+    
+    
+    /*
+    *
+    *Nome del package Annotazioni
+    *
+    */
+    public static final String TABLE_NAME= "TableName";
+    
+    /*
+    *
+    *Nome del packege java.sql.date
+    *
+    */
+    public static final String JAVA_SQL_DATE= "java.sql.Date";
+    
+    
+    
+    
 }
 

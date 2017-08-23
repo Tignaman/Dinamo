@@ -38,7 +38,7 @@ public class DatabaseUtility<T,K,V>
         
     };
     
-    
+    /*Funzione di mmapping che viene utilizzata per convertire il resultset direttamente in una classe*/
     public BiFunction<T,V,K> rsToModel = (x,y)->
     {
         ResultSet rs = (ResultSet) x;
@@ -47,19 +47,16 @@ public class DatabaseUtility<T,K,V>
         List<T> outputList = null;
         try
         {
-            // make sure resultset is not null
             if (rs != null)
             {
-                // get the resultset metadata
                 ResultSetMetaData rsmd = rs.getMetaData();
                 while (rs.next())
                 {
                     T instance = (T) c.newInstance();
                     for (int _iterator = 0; _iterator < rsmd.getColumnCount(); _iterator++)
                     {
-                        // getting the SQL column name
                         String columnName = rsmd.getColumnLabel(_iterator + 1);
-                        // reading the value of the SQL column
+                        
                         Object columnValue = rs.getObject(_iterator + 1);
 
                         Field field = c.getDeclaredField(columnName);
