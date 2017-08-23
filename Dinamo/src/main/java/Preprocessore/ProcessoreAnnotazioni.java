@@ -1,7 +1,7 @@
 package Preprocessore;
 
 import Annotazioni.DinamoBootstrap;
-import Utility.ConfigHelper;
+import Configurazione.ConfigHelper;
 import static ascompany.dinamo.GestoreDB.establishingConnection;
 import static ascompany.dinamo.GestoreModel.GeneraModel;
 import java.sql.Connection;
@@ -47,15 +47,7 @@ public class ProcessoreAnnotazioni extends AbstractProcessor
                 
                 /*Esegue la connessione col database*/
                 Connection connection = establishingConnection();
-                if(connection != null)
-                {
-                    GeneraModel(connection);
-                }
-                else
-                {
-                    throw new Exception("Error establishing the connection with the database");
-                }
-                
+                GeneraModel(connection);
                 
             }
             /*ALtrimento lanciamo l'eccezione*/
@@ -63,9 +55,6 @@ public class ProcessoreAnnotazioni extends AbstractProcessor
             {
                 throw new Exception("Multiple DinamoBoostrap annotation found.");
             }
-            
-            
-            
         } 
         catch (Exception ex)
         {
