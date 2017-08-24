@@ -91,12 +91,26 @@ public class ConfigWriter
         /*Creiamo l'oggetto di mapping*/
         JsonObject mapping = new JsonObject();
         
-        /*Aggiungiamo a questo la proprietà ATTRIBUTE_NAME e TYPE*/
+        /*Aggiungiamo a questo la proprietà ATTRIBUTE_NAME*/
         mapping.addProperty(ConfigName.ATTRIBUTE_NAME,"");
+        
+        /*Aggiungiamo a questo la proprietà TYPE*/
         mapping.addProperty(ConfigName.TYPE, "");
+        
+        /*Aggiungiamo a questo la proprietà PACKAGE*/
+        mapping.addProperty(ConfigName.PACKAGE, "");
+        
+        JsonArray listaCustomAnnotations = new JsonArray();
+        JsonObject annotation = new JsonObject();
+        annotation.addProperty(ConfigName.ANNOTATION_NAME,"");
+        annotation.addProperty(ConfigName.PACKAGE,"");
+        listaCustomAnnotations.add(annotation);
+        mapping.add(ConfigName.CUSTOM_ANNOTATION,listaCustomAnnotations);
+        
         
         /*Aggiungiamo il mapping alla lista dei mapping*/
         listaMapping.add(mapping);
+        
         
         /*Aggiungiamo la lista all'oggetto tabella*/
         tabella.add(ConfigName.MAPPING,listaMapping);

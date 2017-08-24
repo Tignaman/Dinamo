@@ -1,11 +1,14 @@
-package Utility;
+package Classi;
 
 import Classi.Field;
 import Configurazione.ConfigHelper;
 import Configurazione.ConfigModel;
 import Configurazione.ConfigName;
+import Preprocessore.ProcessoreAnnotazioni;
+import Utility.Utility;
 import static Utility.Utility.creaFileJava;
-import static Utility.Utility.isPresent;
+import static Utility.Utility.isClassPresent;
+import static Utility.Utility.isStringPresent;
 import static ascompany.dinamo.GestoreModel.DBConfigFile;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -27,7 +30,17 @@ public class ModelHelper
     * Codice sorgente della classe
     */
     public String classString = "";
- 
+    
+    public String packageString = "";
+    public String importString = "";
+    public String accessModeString = "";
+    public String withKeyString = "";
+    public String returningString = "";
+    public String classNameString = "";
+    public String parametersString = "";
+    public String getterString = "";
+    public String setterString = "";
+    
     /*
     * Codice sorgente dei getter
     */
@@ -43,7 +56,7 @@ public class ModelHelper
     */
     public ModelHelper toPackage(String pkg)
     {
-        this.classString = "package " + pkg +";\n\n";
+        this.packageString = "package " + pkg +";";
         addDependencies();
         return this;
     }
@@ -53,8 +66,8 @@ public class ModelHelper
     */
     public void addDependencies()
     {
-        this.classString += ConfigModel.IMPORT +" "+ ConfigName.ANNOTAZIONI+".*;" + newLine(1) ;
-        this.classString += ConfigModel.IMPORT +" "+ ConfigName.JAVA_SQL_DATE+";" + newLine(2) ;
+        this.importString += ConfigModel.IMPORT +" "+ ConfigName.ANNOTAZIONI+".*;" + newLine(1) ;
+        this.importString += ConfigModel.IMPORT +" "+ ConfigName.JAVA_SQL_DATE+";" + newLine(1) ;
     }
     
     /*
@@ -62,7 +75,7 @@ public class ModelHelper
     */
     public ModelHelper withAccessMode(String mode)
     {
-        this.classString += mode + " ";
+        this.accessModeString += mode + " ";
         return this;
     }
     
@@ -73,7 +86,7 @@ public class ModelHelper
     {
         for(String k : key)
         {
-            this.classString += k + " ";
+            this.withKeyString += k + " ";
         }       
         return this;
     }
@@ -83,7 +96,7 @@ public class ModelHelper
     */
     public ModelHelper returning(String type)
     {
-        this.classString += type + " ";
+        this.returningString += type + " ";
         return this;
     }
     
@@ -93,7 +106,7 @@ public class ModelHelper
     public ModelHelper className(String name)
     {
         this.nomeTabella = name;
-        this.classString += name + newLine(1) + openBracket();
+        this.classNameString += name + newLine(1) + openBracket();
         return this;
     }
     
@@ -102,7 +115,7 @@ public class ModelHelper
     */
     public ModelHelper addParamater(Field f)
     {
-        this.classString += tab(1) +
+        this.parametersString += tab(1) +
                 (f.getAnnotazione() != null ? f.getAnnotazione() +"" : "") + 
                 (f.getModificatore() != null ? f.getModificatore() : "") + 
                 (f.getKey() != null ? f.getKey() +" " : "") + 
@@ -121,7 +134,7 @@ public class ModelHelper
     */
     public ModelHelper addGetter()
     {
-        this.classString += this.getter;
+        this.getterString += this.getter;
         return this;
     }
     
@@ -130,7 +143,7 @@ public class ModelHelper
     */
     public ModelHelper addSetter()
     {
-        this.classString += this.setter;
+        this.setterString += this.setter;
         return this;
     }
     
@@ -149,7 +162,17 @@ public class ModelHelper
     */
     public ModelHelper terminate() throws Exception
     {
-        this.classString += newLine(1) + closeBracket();
+        this.classString = 
+        this.packageString + newLine(2) +
+        this.importString + newLine(1) +
+                
+        this.accessModeString + this.withKeyString + this.returningString + this.classNameString +
+        
+        this.parametersString +
+        this.getterString +
+        this.setterString +
+                
+        this.classString + newLine(1) + closeBracket();
         
         creaFileJava(nomeTabella, classString, ConfigHelper.getPercorsoModel());
         return this;
@@ -233,7 +256,7 @@ public class ModelHelper
     /*
     * Metodo che data una lista di metadati ottenuta direttamente dalla query sfrutta il metodo "AddParameter" per aggiungere tutti i campi
     */
-     public ModelHelper addParameters(JsonArray metadataTabella)
+     public ModelHelper addParameters(JsonArray metadataTabella) throws Exception
     {
         /*Viene preso il JsonArray nella quale sono specificate le annotazioni da dover ignorare*/
         JsonArray tableSpefication = DBConfigFile.get(ConfigName.TABLE_SPECIFICATION).getAsJsonArray();
@@ -241,21 +264,14 @@ public class ModelHelper
         /*Viene creato l'oggetto che conterrà il JsonMapping*/
         JsonArray mappingTable = new JsonArray();
         
-        System.out.println("TABLE SPECIFICATION DEL FILE DI CONFIGURAZIONE" + tableSpefication);
-        System.out.println("TABELLA CORRENTE: " + this.nomeTabella);
-        
-        boolean tableSpecificated = false;
         for(JsonElement table : tableSpefication)
         {
             if(table.getAsJsonObject().get(ConfigName.TABLE_NAME).getAsString().toLowerCase().equals(this.nomeTabella.toLowerCase()))
             {
                 mappingTable = table.getAsJsonObject().get(ConfigName.MAPPING).getAsJsonArray();
-                tableSpecificated = true;
             }
         }
         
-        
-
         ArrayList<String> campiCreati = new ArrayList<>();
 
         for(JsonElement je : metadataTabella)
@@ -272,16 +288,33 @@ public class ModelHelper
             if(!found)
             {
                 String tipo = ConfigModel.TYPE_MAPPING.get(jo.get("data_type").getAsString());
+                String customPackage = "";
+                JsonArray customAnnotation = new JsonArray();
+                
                 for(JsonElement jmap : mappingTable)
                 {
                     if(jmap.getAsJsonObject().get(ConfigName.ATTRIBUTE_NAME).getAsString().toLowerCase().equals(jo.get("column_name").getAsString().toLowerCase()))
                     {
-                        System.out.println("IL CAMPO " + jo.get("column_name").getAsString() + " ha un mapping diverso da quello normale");
                         tipo = jmap.getAsJsonObject().get(ConfigName.TYPE).getAsString();
+                        customPackage = jmap.getAsJsonObject().get(ConfigName.PACKAGE).getAsString();
+                        customAnnotation = jmap.getAsJsonObject().get(ConfigName.CUSTOM_ANNOTATION).getAsJsonArray();
                     }
                 }
                 
-                addParamater(new Field(addAnnotation(jo),ConfigModel.PUBLIC, null, tipo ,jo.get("column_name").getAsString()));            
+                boolean isBaseType = false;
+                for(String baseType : ConfigModel.BASE_TYPE)
+                {
+                    if(tipo.equals(baseType))
+                    {
+                        isBaseType = true;
+                    }
+                }
+                if(isBaseType == false)
+                {
+                    this.importString += ConfigModel.IMPORT +" "+ customPackage +"."+ tipo +";" + newLine(1) ;
+                }
+                
+                addParamater(new Field(addAnnotation(jo,customAnnotation),ConfigModel.PUBLIC, null, tipo ,jo.get("column_name").getAsString()));            
                 campiCreati.add(jo.get("column_name").getAsString());
             }
         }
@@ -291,49 +324,55 @@ public class ModelHelper
      /*
      *Metodo che dal JsonObject di Metadati interpreta le annotazioni che vanno aggiunte
      */
-     public ArrayList<String> addAnnotation(JsonObject jo)
+     public ArrayList<String> addAnnotation(JsonObject jo,JsonArray customAnnotation)
      {
         /*Viene preso il JsonArray nella quale sono specificate le annotazioni da dover ignorare*/
         JsonArray ignoreAnnotations = DBConfigFile.get(ConfigName.IGNORE_ANNOTATIONS).getAsJsonArray();
         
         ArrayList<String> listaAnnotazioni = new ArrayList<>();
         
-        
         if(jo.get("column_key").getAsString().equals("PRI"))
         {
-            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"PrimaryKey"))
+            if(!isStringPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"PrimaryKey"))
             {
                 listaAnnotazioni.add("@PrimaryKey");
             }
         }
         if(jo.get("column_key").getAsString().equals("UNI"))
         {
-            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"Unique"))
+            if(!isStringPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"Unique"))
             {
                 listaAnnotazioni.add("@Unique");
             }
         }
         if(jo.get("is_nullable").getAsString().equals("NO"))
         {
-            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"NotNullable"))
+            if(!isStringPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"NotNullable"))
             {
                 listaAnnotazioni.add("@NotNullable");
             }
         }
         if(jo.get("extra").getAsString().equals("auto_increment"))
         {
-            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"AutoIncrement"))
+            if(!isStringPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"AutoIncrement"))
             {
                 listaAnnotazioni.add("@AutoIncrement");
             }
         }
         if(!jo.get("referenced_table_name").getAsString().equals("null"))
         {
-            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"ForeignKey"))
+            if(!isStringPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"ForeignKey"))
             {
                 listaAnnotazioni.add("@ForeignKey(table=\""+jo.get("referenced_table_name").getAsString()+"\",column=\""+ jo.get("referenced_column_name").getAsString() +"\")");
             }
         }
+        
+        for(JsonElement je : customAnnotation)
+        {
+            listaAnnotazioni.add("@"+je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString());
+            this.importString += ConfigModel.IMPORT +" "+ je.getAsJsonObject().get(ConfigName.PACKAGE).getAsString() +"."+ je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString() +";" + newLine(1) ;   
+        }
+        
         return listaAnnotazioni;
      }
     

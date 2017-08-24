@@ -183,6 +183,19 @@ public class ConfigName
     */
     public static final String TABLE_SPECIFICATION= "TableSpecification";
     
+    /*
+    *
+    *Nome della proprietà PACKAGE
+    *
+    */
+    public static final String PACKAGE= "Package";
+    
+    /*
+    *
+    *Nome della proprietà CUSTOM_ANNOTATION
+    *
+    */
+    public static final String CUSTOM_ANNOTATION= "CustomAnnotation";
     
     
 }

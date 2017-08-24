@@ -8,7 +8,7 @@ import Database.QueryCore;
 import Database.Select;
 import Configurazione.ConfigHelper;
 import static Configurazione.ConfigHelper.mandatoryModelConfigParam;
-import Utility.ModelHelper;
+import Classi.ModelHelper;
 import Utility.Utility;
 import static Utility.Utility.capitalizeFirstLetter;
 import static Utility.Utility.deleteDir;

@@ -113,7 +113,7 @@ public class Utility
     /*
     * Funzione utilizzata per controllare se in un JsonArray è presente una strigna
     */
-    public static boolean isPresent(JsonArray ja,String p, String check)
+    public static boolean isStringPresent(JsonArray ja,String p, String check)
     {
         for(JsonElement je : ja)
         {
@@ -123,5 +123,18 @@ public class Utility
             }
         }
         return false;
+    }
+    
+    public static boolean isClassPresent(String className) 
+    {
+        try  
+        {
+            Class.forName(className);
+            return true;
+        }  
+        catch (ClassNotFoundException e) 
+        {
+            return false;
+        }
     }
 }

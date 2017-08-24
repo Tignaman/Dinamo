@@ -1,5 +1,7 @@
 package Configurazione;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -111,5 +113,15 @@ public class ConfigModel
         put("datetime" , "Date");
         put("timestamp", "Date");
     }};
+    
+    public static final ArrayList<String> BASE_TYPE = new ArrayList<>(Arrays.asList
+    (
+        "int",
+        "float",
+        "double",
+        "String",
+        "char",
+        "boolean"
+    ));
     
 }
