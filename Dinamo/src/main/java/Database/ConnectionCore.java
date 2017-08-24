@@ -3,32 +3,50 @@ package Database;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/*Classe che viene utilizzata esclusivamente per gestire la connessione*/
+/**
+ * 
+ * @author m.castano
+ */
 public class ConnectionCore
 {
-    /*Oggetto di tipo connection*/
+    /**
+     * Oggetto di tipo connection 
+     */
     private Connection c = null;
 
-    /*Ritorna la connessione*/
+    /**
+     * 
+     * @return Ritorna la connessione
+     */
     public Connection getConnection()
     {
         return c;
     }
     
-    /*Apre la connessione chiamando la funzione fetchConnection ed impostando l'autocommit a false*/
+    /**
+     * Apre la connessione chiamando la funzione fetchConnection ed impostando l'autocommit a false 
+     * 
+     * @throws SQLException 
+     */
     public void openConnection() throws SQLException
     {
         c = fetchConnection();
         c.setAutoCommit(false);
     }
     
-    //Funzioni per ricavare una connessione
+    /**
+     * 
+     * @return connessione
+     * @throws SQLException 
+     */
     private Connection fetchConnection() throws SQLException
     {
         return getConnection();
     }
     
-    /*Funzione che chiude la connessione*/
+    /**
+     * Funzione che chiude la connessione 
+     */
     public void closeConnection()
     {
         try
@@ -45,17 +63,22 @@ public class ConnectionCore
         }
     }
     
-    /*Funzione per eseguire il commit*/
+    /**
+     * Funzione per eseguire il commit
+     * 
+     * @throws SQLException 
+     */
     public void doCommit() throws SQLException
     {
         if(c != null && !c.isClosed())
         {
             c.commit();
         }
-        
     }
     
-    /*Funzione per eseguire il rollback*/
+    /**
+     * Funzione per eseguire il rollback 
+     */
     public void doRollback() 
     {
         try
@@ -70,5 +93,4 @@ public class ConnectionCore
             ex.printStackTrace();
         }
     }
-
 }

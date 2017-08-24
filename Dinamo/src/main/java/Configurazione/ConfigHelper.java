@@ -11,42 +11,57 @@ import java.util.Arrays;
  */
 public class ConfigHelper
 {
-    /*
-    * ArrayList che contiene i campi obbligatori per quanto riguarda il file di configurazione della connessione al database
-    */
+    /**
+     * ArrayList che contiene i campi obbligatori per quanto riguarda il file di configurazione della connessione al database
+     */
     public static ArrayList<String> mandatoryDBConnectionParam = new ArrayList<>(Arrays.asList
     (
        ConfigName.IP,ConfigName.PORT,ConfigName.DRIVER,ConfigName.DATABASE,ConfigName.USERNAME     
     ));
     
-    /*
-    *ArrayList che contiene i campi obbligatori per quanto riguarda il file di configurazione delle Model
-    */
+    /**
+     * ArrayList che contiene i campi obbligatori per quanto riguarda il file di configurazione delle Model
+     */
     public static ArrayList<String> mandatoryModelConfigParam = new ArrayList<>(Arrays.asList
     (
         ConfigName.MODEL_PATH
     ));
     
-    
-    /*Variabile che contiene il basepath*/
+    /**
+     * Variabile che contiene il basepath 
+     */
     public static String basePath = "";
     
-    /*Variabile che contiene il nome del package nella quale c'è l'annotazione*/
+    /**
+     * Variabile che contiene il nome del package nella quale c'è l'annotazione 
+     */
     public static String basePackage = "";
 
-    /*Funzione che ritorna il percorso del file di configurazione della connessione al database*/
+    /**
+     *
+     * @return il percorso del file di configurazione della connessione al database
+     * @throws IOException 
+     */
     public static String getPercorsoFileDBConnection() throws IOException
     {
         return ConfigHelper.basePath+ "/" + ConfigName.PKG + "/" + ConfigName.CONFIG_DIR + "/" + ConfigName.FILE_DB_CONNECTION ;
     }
     
-    /*Funzione che ritorna il percorso del file di configurazione della connessione al database*/
+    /**
+     * 
+     * @return il percorso del file di configurazione delle Model
+     * @throws IOException 
+     */
     public static String getPercorsoFileConfigModel() throws IOException
     {
         return ConfigHelper.basePath+ "/" + ConfigName.PKG + "/" + ConfigName.CONFIG_DIR + "/" + ConfigName.CONFIG_MODEL ;
     }
     
-    /*Funzione che ritorna il percorso dove deve essere salvata la model*/
+    /**
+     * 
+     * @return il percorso dove verranno create le model
+     * @throws IOException 
+     */
     public static String getPercorsoModel() throws IOException
     {
         return ConfigHelper.basePackage+ "/" + ConfigName.PKG + "/" + ConfigName.MODEL_DIR ;

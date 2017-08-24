@@ -15,42 +15,42 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 
 /**
- *
- * @author marcocastano
+ * 
+ * @author m.castano
  */
 @SupportedAnnotationTypes("Annotazioni.DinamoBootstrap")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class ProcessoreAnnotazioni extends AbstractProcessor
 {
+    /**
+     * Costruttore
+     */
     public ProcessoreAnnotazioni() 
     {
         super();
     }
     
+    /**
+     * 
+     * @param annotations
+     * @param roundEnv
+     * @return 
+     */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv)
     {
         try
         {
-            /*Controlliamo se l'annotazione è presente soltanto una volta nel codice*/
             if(roundEnv.getElementsAnnotatedWith(DinamoBootstrap.class).size() <= 1)
             {
-                /*Per ogni annotazione trovata prendiamo il percorso dove verrà creato il package DINAMO*/
                 for (Element elem : roundEnv.getElementsAnnotatedWith(DinamoBootstrap.class)) 
                 {
-                    //Ricaviamo l'elemento
                     DinamoBootstrap dinamoBootstrap = elem.getAnnotation(DinamoBootstrap.class);
-                    
-                    /*Settiamo il base Path*/
                     ConfigHelper.basePath = dinamoBootstrap.path();
                 }
-                
-                /*Esegue la connessione col database*/
                 Connection connection = establishingConnection();
                 GeneraModel(connection);
-                
             }
-            /*ALtrimento lanciamo l'eccezione*/
             else
             {
                 throw new Exception("Multiple DinamoBoostrap annotation found.");
@@ -60,9 +60,6 @@ public class ProcessoreAnnotazioni extends AbstractProcessor
         {
             ex.printStackTrace();
         }
-        
         return true;
-        
     }
-    
 }

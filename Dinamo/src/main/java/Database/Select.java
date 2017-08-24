@@ -8,18 +8,25 @@ import java.util.List;
  */
 public class Select
 {
-    /*
-    * Funzione che restituisce la query per ricavare la lista delle tabelle
-    */
+    /**
+     * Funzione che restituisce la query per ricavare la lista delle tabelle
+     * 
+     * @param <T> 
+     * @param l 
+     */
     public static <T> QueryCore getTablesName(List<T> l)
     {
         String query = "SELECT table_name from information_schema.tables where table_Schema = ?";
         return new QueryCore(query,l);
     }
     
-    /*
-    * Funzione che restituisce la query per ricavare i metadati di una tabella
-    */
+    /**
+     * Funzione che restituisce la query per ricavare i metadati di una tabella
+     * 
+     * @param <T> Tipo degli oggetti della lista dei prepared statement
+     * @param l lista dei prepared statement
+     * @return QueryCore
+     */
     public static <T> QueryCore getMetadataFromTable(List<T> l)
     {
         String query = 

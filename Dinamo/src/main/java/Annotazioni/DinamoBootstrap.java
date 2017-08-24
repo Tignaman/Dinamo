@@ -11,8 +11,9 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.SOURCE)
 public @interface DinamoBootstrap
 {
-    /*
-    * Percorso alla quale verranno creati i file di configurazione
-    */
+    /**
+     * 
+     * @return percorso dove verranno creati i file di configurazione
+     */
     String path();
 }

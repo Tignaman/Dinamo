@@ -10,96 +10,69 @@ import java.util.HashMap;
  */
 public class ConfigModel
 {
-    /*
-    *
-    *    Modificatore public
-    *
-    */
+    /**
+     * Modificato public
+     */
     public static final String PUBLIC = "public";
     
-    /*
-    *
-    *    Modificatore protected
-    *
-    */
+    /**
+     * Modifica protected
+     */
     public static final String PROTECTED = "protected";
     
-    /*
-    *
-    *    Modificatore private
-    *
-    */
+    /**
+     * Modificatore private
+     */
     public static final String PRIVATE = "private";
     
-    /*
-    *
-    *    Parola chiave class
-    *
-    */
+    /**
+     * Parola chiave CLASS
+     */
     public static final String CLASS = "class";
     
-    /*
-    *
-    *    Parola chiave final
-    *
-    */
+    /**
+     * Parola chiave FINAL
+     */
     public static final String FINAL = "final";
     
-    /*
-    *
-    *    Parola chiave static
-    *
-    */
+    /**
+     * Parola chiave STATIC
+     */
     public static final String STATIC = "static";
     
-    /*
-    *
-    *    Parola chiave void
-    *
-    */
+    /**
+     * Parola chiave VOID
+     */
     public static final String VOID = "void";
     
-    /*
-    *
-    *    Parola chiave get
-    *
-    */
+    /**
+     * Parola chiave GET
+     */
     public static final String GET = "get";
     
-    /*
-    *
-    *    Parola chiave set
-    *
-    */
+    /**
+     * Parola chiave SET
+     */
     public static final String SET = "set";
     
-    /*
-    *
-    *    Parola chiave return
-    *
-    */
+    /**
+     * Parola chiave RETURN
+     */
     public static final String RETURN = "return";
     
-    /*
-    *
-    *    Parola chiave this
-    *
-    */
+    /**
+     * Parola chiave THIS
+     */
     public static final String THIS = "this";
     
-    /*
-    *
-    *    Parola chiave import
-    *
-    */
+    /**
+     * Parola chiave IMPORT
+     */
     public static final String IMPORT = "import";
     
-    
-    /*
-    *
-    *    Hashmap utilizzato per mappare i tipi
-    *
-    */
+    /**
+     * Hashmap utilizzato per mappare i tipi
+     */
     public static final HashMap<String,String> TYPE_MAPPING = new HashMap<String,String>()
     {{
         put("int", "int");
@@ -114,6 +87,9 @@ public class ConfigModel
         put("timestamp", "Date");
     }};
     
+    /**
+     * ArrayList utilizzato per capire quali sono i tipi di base che non richiedono un import
+     */
     public static final ArrayList<String> BASE_TYPE = new ArrayList<>(Arrays.asList
     (
         "int",

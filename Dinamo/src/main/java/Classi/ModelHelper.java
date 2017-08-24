@@ -1,6 +1,5 @@
 package Classi;
 
-import Classi.Field;
 import Configurazione.ConfigHelper;
 import Configurazione.ConfigModel;
 import Configurazione.ConfigName;
@@ -21,24 +20,59 @@ import java.util.ArrayList;
  */
 public class ModelHelper
 {
-    /*
-    * Nome della tabella corrispondente alla classe
-    */
+    /**
+     * Nome della tabella corrispondente alla classe
+     */
     public String nomeTabella = "";
     
-    /*
-    * Codice sorgente della classe
-    */
+    /**
+     * Codice sorgente della classe
+     */
     public String classString = "";
     
+    /**
+     * Codice sorgente del package
+     */
     public String packageString = "";
+    
+    /**
+     * Codice sorgente degli import
+     */
     public String importString = "";
+    
+    /**
+     * Codice sorgente del modificatore d'accesso
+     */
     public String accessModeString = "";
+    
+    /**
+     * Codice sorgente delle chiavi
+     */
     public String withKeyString = "";
+    
+    /**
+     * Codice sorgente del tipo di ritorno
+     */
     public String returningString = "";
+    
+    /**
+     * Codice sorgente del nome della classe
+     */
     public String classNameString = "";
+    
+    /**
+     * Codice sorgente della lista dei camp
+     */
     public String parametersString = "";
+    
+    /**
+     * Codice sorgente dei getter
+     */
     public String getterString = "";
+    
+    /**
+     * Codice sorgente dei setter
+     */
     public String setterString = "";
     
     /*
@@ -51,9 +85,11 @@ public class ModelHelper
     */
     public String setter = "";
         
-    /*
-    *Funzione che permette di specificare un package
-    */
+    /**
+     * 
+     * @param pkg package della classe
+     * @return Istanza di classe
+     */
     public ModelHelper toPackage(String pkg)
     {
         this.packageString = "package " + pkg +";";
@@ -61,27 +97,31 @@ public class ModelHelper
         return this;
     }
     
-    /*
-    *Funzione che permette di specificare gli import
-    */
+    /**
+     * Funzione che permette di specificare gli import
+     */
     public void addDependencies()
     {
         this.importString += ConfigModel.IMPORT +" "+ ConfigName.ANNOTAZIONI+".*;" + newLine(1) ;
         this.importString += ConfigModel.IMPORT +" "+ ConfigName.JAVA_SQL_DATE+";" + newLine(1) ;
     }
     
-    /*
-    *Funzione che permette di specificare il modificatore d'accesso
-    */
+    /**
+     * 
+     * @param mode modificatore d'accesso della classe
+     * @return Istanza di classe
+     */
     public ModelHelper withAccessMode(String mode)
     {
         this.accessModeString += mode + " ";
         return this;
     }
     
-    /*
-    *Funzione che permette di specificare le chiavi
-    */
+    /**
+     * 
+     * @param key lista di chiavi
+     * @return Istanza di classe
+     */
     public ModelHelper withKey(String ...key)
     {
         for(String k : key)
@@ -91,18 +131,22 @@ public class ModelHelper
         return this;
     }
     
-    /*
-    *Funzione che permette di specificare il tipo di ritorno
-    */
+    /**
+     * 
+     * @param type tipo di ritorno
+     * @return Istanza di classe
+     */
     public ModelHelper returning(String type)
     {
         this.returningString += type + " ";
         return this;
     }
     
-    /*
-    *Funzione che permette di specificare il nome della classe
-    */
+    /**
+     * 
+     * @param name nome della classe
+     * @return Istanza di classe
+     */
     public ModelHelper className(String name)
     {
         this.nomeTabella = name;
@@ -110,9 +154,11 @@ public class ModelHelper
         return this;
     }
     
-    /*
-    *Funzione che permette di aggiungere un campo e che riempie i getter e i setter
-    */
+    /**
+     * 
+     * @param f Field che deve essere aggiunto alla classe
+     * @return Istanza di classe
+     */
     public ModelHelper addParamater(Field f)
     {
         this.parametersString += tab(1) +
@@ -129,27 +175,30 @@ public class ModelHelper
         return this;
     }
     
-    /*
-    *Funzione che permette di aggiungere i getter
-    */
+    /**
+     * 
+     * @return Istanza di classe
+     */
     public ModelHelper addGetter()
     {
         this.getterString += this.getter;
         return this;
     }
     
-    /*
-    *Funzione che permette di aggiungere i setter
-    */
+    /**
+     * 
+     * @return Istanza di classe
+     */
     public ModelHelper addSetter()
     {
         this.setterString += this.setter;
         return this;
     }
     
-    /*
-    *Funzione che permette di aggiungere i getter e i setter
-    */
+    /**
+     * 
+     * @return Istanza di classe
+     */
     public ModelHelper addGetterAndSetter()
     {
         addGetter();
@@ -157,9 +206,11 @@ public class ModelHelper
         return this;
     }
     
-    /*
-    *Funzione che permette di terminare il processo di creazione
-    */
+    /**
+     * 
+     * @return Istanza di classe
+     * @throws Exception 
+     */
     public ModelHelper terminate() throws Exception
     {
         this.classString = 
@@ -178,9 +229,10 @@ public class ModelHelper
         return this;
     }
     
-    /*
-    * Funzione che aggiunge i getter al sorgente
-    */
+    /**
+     * 
+     * @param f Field di cui si deve creare il get
+     */
     public void createGetter(Field f)
     {
         this.getter += 
@@ -193,9 +245,10 @@ public class ModelHelper
         newLine(1) + tab(1) + closeBracket(); 
     }
     
-    /*
-    * Funzione che aggiunge i setter al sorgente
-    */
+    /**
+     * 
+     * @param f Field di cui si deve creare il set
+     */
     public void createSetter(Field f)
     {
         this.setter += 
@@ -208,25 +261,29 @@ public class ModelHelper
         newLine(1) +  tab(1) + closeBracket(); 
     }
     
-    /*
-    * Funzione che aggiunge parentesi graffa aperta
-    */
+    /**
+     * 
+     * @return parentesi aperta
+     */
     public String openBracket()
     {
         return "{\n";
     }
     
-    /*
-    * Funzione che aggiunge parentesi graffa chiusa
-    */
+    /**
+     * 
+     * @return parentesi chiusa
+     */
     public String closeBracket()
     {
         return "}\n";
     }
     
-    /*
-    * Funzione che aggiunge una nuova linea 
-    */
+    /**
+     * 
+     * @param n numero di nuove linee
+     * @return nuova linea
+     */
     public String newLine(int n)
     {
         String s = "";
@@ -237,9 +294,11 @@ public class ModelHelper
         return s;
     }
     
-    /*
-    * Funzione che aggiunge una tabulazione
-    */
+    /**
+     * 
+     * @param n numero di tab
+     * @return tab
+     */
     public String tab(int n)
     {
         String s = "";
@@ -250,12 +309,12 @@ public class ModelHelper
         return s;
     }
     
-    
-    //METODI GENERALI 
-    
-    /*
-    * Metodo che data una lista di metadati ottenuta direttamente dalla query sfrutta il metodo "AddParameter" per aggiungere tutti i campi
-    */
+    /**
+     * 
+     * @param metadataTabella Metadati di una tabella da cui vengono ricavate le informazioni
+     * @return Istanza di classe
+     * @throws Exception 
+     */
      public ModelHelper addParameters(JsonArray metadataTabella) throws Exception
     {
         /*Viene preso il JsonArray nella quale sono specificate le annotazioni da dover ignorare*/
@@ -295,7 +354,10 @@ public class ModelHelper
                 {
                     if(jmap.getAsJsonObject().get(ConfigName.ATTRIBUTE_NAME).getAsString().toLowerCase().equals(jo.get("column_name").getAsString().toLowerCase()))
                     {
-                        tipo = jmap.getAsJsonObject().get(ConfigName.TYPE).getAsString();
+                        if(jmap.getAsJsonObject().get(ConfigName.TYPE).getAsString().trim().length() > 0)
+                        {
+                            tipo = jmap.getAsJsonObject().get(ConfigName.TYPE).getAsString();
+                        }
                         customPackage = jmap.getAsJsonObject().get(ConfigName.PACKAGE).getAsString();
                         customAnnotation = jmap.getAsJsonObject().get(ConfigName.CUSTOM_ANNOTATION).getAsJsonArray();
                     }
@@ -313,7 +375,6 @@ public class ModelHelper
                 {
                     this.importString += ConfigModel.IMPORT +" "+ customPackage +"."+ tipo +";" + newLine(1) ;
                 }
-                
                 addParamater(new Field(addAnnotation(jo,customAnnotation),ConfigModel.PUBLIC, null, tipo ,jo.get("column_name").getAsString()));            
                 campiCreati.add(jo.get("column_name").getAsString());
             }
@@ -321,14 +382,15 @@ public class ModelHelper
         return this;
     }
      
-     /*
-     *Metodo che dal JsonObject di Metadati interpreta le annotazioni che vanno aggiunte
-     */
+     /**
+      * 
+      * @param jo JsonObject da cui vengono ricavati le informazioni
+      * @param customAnnotation JsonArray di ulteriori annotazioni che vengono aggiunte
+      * @return 
+      */
      public ArrayList<String> addAnnotation(JsonObject jo,JsonArray customAnnotation)
      {
-        /*Viene preso il JsonArray nella quale sono specificate le annotazioni da dover ignorare*/
         JsonArray ignoreAnnotations = DBConfigFile.get(ConfigName.IGNORE_ANNOTATIONS).getAsJsonArray();
-        
         ArrayList<String> listaAnnotazioni = new ArrayList<>();
         
         if(jo.get("column_key").getAsString().equals("PRI"))
@@ -366,13 +428,11 @@ public class ModelHelper
                 listaAnnotazioni.add("@ForeignKey(table=\""+jo.get("referenced_table_name").getAsString()+"\",column=\""+ jo.get("referenced_column_name").getAsString() +"\")");
             }
         }
-        
         for(JsonElement je : customAnnotation)
         {
             listaAnnotazioni.add("@"+je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString());
             this.importString += ConfigModel.IMPORT +" "+ je.getAsJsonObject().get(ConfigName.PACKAGE).getAsString() +"."+ je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString() +";" + newLine(1) ;   
         }
-        
         return listaAnnotazioni;
      }
     

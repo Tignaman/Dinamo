@@ -6,139 +6,99 @@ package Configurazione;
  */
 public class ConfigName
 {
-    /*
-    *
-    *Punto di partenza all'interno del progetto dove verrà creato il package "Dinamo"
-    *
-    */
+    /**
+     * Punto di partenza all'interno del progetto dove verrà creato il package DINAMO
+     */
     public static final String SORGENTE = "src";
     
-    /*
-    *
-    *Nome del Package Dinamo
-    *
-    */
+    /**
+     * Nome del package DINAMO
+     */
     public static final String PKG = "Dinamo";
     
-    /*
-    *
-    *Nome del file della configurazione col database
-    *
-    */
+    /**
+     * Nome del file della configurazione col database
+     */
     public static final String FILE_DB_CONNECTION = "DBConnection.json";
     
-    /*
-    *
-    *Nome del driver
-    *
-    */
+    /**
+     * Nome della proprietà DRIVER
+     */
     public static final String DRIVER = "Driver";
     
-    /*
-    *
-    *Nome dell' ip
-    *
-    */
+    /**
+     * Nome della proprietà IP
+     */
     public static final String IP = "Ip";
     
-    /*
-    *
-    *Nome della porta
-    *
-    */
+    /**
+     * Nome della proprietà PORT
+     */
     public static final String PORT = "Port";
    
-    /*
-    *
-    *Nome dell'username
-    *
-    */
+    /**
+     * Nome della proprietà USERNAME
+     */
     public static final String USERNAME = "Username";
     
-    /*
-    *
-    *Nome della password
-    *
-    */
+    /**
+     * Nome della proprietà PASSWORD
+     */
     public static final String PASSWORD = "Password";
     
-    /*
-    *
-    *Nome del database
-    *
-    */
+    /**
+     * Nome della proprietà DATABASE
+     */
     public static final String DATABASE = "Database";
     
-    /*
-    *
-    *Nome del timezone
-    *
-    */
+    /**
+     * Nome della proprietà TIMEZONE
+     */
     public static final String TIMEZONE = "Timezone";
     
-    /*
-    *
-    *Parte iniziale fissa del timezone
-    *
-    */
+    /**
+     * Parte iniziale della proprietà TIMEZONE
+     */
     public static final String PREFIX_TIMEZONE = "?serverTimezone=";
     
-    /*
-    *
-    *Nome del file json di configurazione delle Model
-    *
-    */
+    /**
+     * Nome del file json di configurazione delle Model
+     */
     public static final String CONFIG_MODEL = "ModelConfiguration.json";
     
-    /*
-    *
-    *Nome cartella dei file di configurazione
-    *
-    */
+    /**
+     * Nome cartella dei file di configurazione
+     */
     public static final String CONFIG_DIR = "DinamoConfig";
     
-    /*
-    *
-    *Path delle Model
-    *
-    */
+    /**
+     * Nome della Proprietà MODEL_PATH
+     */
     public static final String MODEL_PATH= "ModelPath";
     
-    /*
-    *
-    *Nome cartella delle model
-    *
-    */
+    /**
+     * Nome della cartella delle model
+     */
     public static final String MODEL_DIR= "DinamoModel";
     
-    
-    /*
-    *
-    *Nome della proprietà IGNORE_TABLES
-    *
-    */
+    /**
+     * Nome della prorpietà IGNORE_TABLES
+     */
     public static final String IGNORE_TABLES= "IgnoreTables";
     
-    /*
-    *
-    *Nome della proprietà IGNORE_ANNOTATIONS
-    *
-    */
+    /**
+     * Nome della proprietà IGNORE_ANNOTATIONS
+     */
     public static final String IGNORE_ANNOTATIONS= "IgnoreAnnotations";
     
-    /*
-    *
-    *Nome del package Annotazioni
-    *
-    */
+    /**
+     * Nome della proprietà ANNOTAZIONI
+     */
     public static final String ANNOTAZIONI= "Annotazioni";
     
-    
-    /*
-    *
-    *Nome della proprietà TABLE_NAME
-    *
-    */
+    /**
+     * Nome della proprietà TABLE_NAME
+     */
     public static final String TABLE_NAME= "TableName";
     
     /*
@@ -148,53 +108,39 @@ public class ConfigName
     */
     public static final String ANNOTATION_NAME= "AnnotationName";
     
-    /*
-    *
-    *Nome del packege java.sql.date
-    *
-    */
+    /**
+     * Nome del package java.sql.date
+     */
     public static final String JAVA_SQL_DATE= "java.sql.Date";
     
-    /*
-    *
-    *Nome della proprietà MAPPING
-    *
-    */
+    /**
+     * Nome della proprietà MAPPING
+     */
     public static final String MAPPING= "Mapping";
     
-    /*
-    *
-    *Nome della proprietà ATTRIBUTE_NAME
-    *
-    */
+    /**
+     * Nome della proprietà ATTRIBUTE_NAME
+     */
     public static final String ATTRIBUTE_NAME= "AttributeName";
     
-    /*
-    *
-    *Nome della proprietà TYPE
-    *
-    */
+    /**
+     * Nome della proprietà TYPE
+     */
     public static final String TYPE= "Type";
     
-    /*
-    *
-    *Nome della proprietà TABLE_SPECIFICATION
-    *
-    */
+    /**
+     * Nome della proprietà TABLE_SPECIFICATION
+     */
     public static final String TABLE_SPECIFICATION= "TableSpecification";
     
-    /*
-    *
-    *Nome della proprietà PACKAGE
-    *
-    */
+    /**
+     * Nome della proprietà PACKAGE
+     */
     public static final String PACKAGE= "Package";
     
-    /*
-    *
-    *Nome della proprietà CUSTOM_ANNOTATION
-    *
-    */
+    /**
+     * Nome della proprietà CUSTOM_ANNOTATION
+     */
     public static final String CUSTOM_ANNOTATION= "CustomAnnotation";
     
     

@@ -1,18 +1,21 @@
 package Annotazioni;
 
 /**
- *
+ * Intefaccia che indica se un campo è un foreign key
+ * 
  * @author n.dipietro
  */
 public @interface ForeignKey
 {
-    /*
-    * Tabella referenziata dalla foreign key
-    */
+    /**
+     * 
+     * @return tabella referenziata dalla foreign key
+     */
     String table();
     
-    /*
-    * Colonna referenziata dalla foregin key
-    */
+    /**
+     * 
+     * @return colonna referenziata dalla foreign key
+     */
     String column();
 }

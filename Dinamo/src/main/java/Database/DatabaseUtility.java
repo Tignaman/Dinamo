@@ -10,9 +10,18 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+/**
+ * 
+ * @author m.castano
+ * @param <T> ResultSet
+ * @param <K> Json
+ * @param <V> Class
+ */
 public class DatabaseUtility<T,K,V>
 {
-    /*Funzione di mmapping che viene utilizzata per convertire il resultset direttamente in json*/
+    /**
+     * Funzione di mmapping che viene utilizzata per convertire il resultset direttamente in json 
+     */
     public Function<T,K> rsToJson = (x)->
     {
         JsonArray jsonArray = new JsonArray();
@@ -38,7 +47,9 @@ public class DatabaseUtility<T,K,V>
         
     };
     
-    /*Funzione di mmapping che viene utilizzata per convertire il resultset direttamente in una classe*/
+    /**
+     * Funzione di mmapping che viene utilizzata per convertire il resultset direttamente in una classe 
+     */
     public BiFunction<T,V,K> rsToModel = (x,y)->
     {
         ResultSet rs = (ResultSet) x;

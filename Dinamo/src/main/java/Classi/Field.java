@@ -3,39 +3,45 @@ package Classi;
 import java.util.ArrayList;
 
 /**
- *
+ * Classe che corrisponde al campo di una classe
+ * 
  * @author n.dipietro
  */
 public class Field
 {
-    /*
-    * Lista delle annotazioni presenti per ogni campo
-    */
+    /**
+     * Lista delle annotazioni presenti per ogni campo
+     */
     ArrayList<String> annotazione;
     
-    /*
-    * Modificatore del campo
-    */
+    /**
+     * Modificatore del campo
+     */
     String modificatore;
     
-    /*
-    * Lista delle chiavi del campo
-    */
+    /**
+     * Lista delle chiavi del campo
+     */
     ArrayList<String> key;
     
-    /*
-    * Tipo del campo
-    */
+    /**
+     * Tipo del campo
+     */
     String tipo;
     
-    /*
-    * Nome del campo
-    */
+    /**
+     * Nome del campo
+     */
     String nome;
 
-    /*
-    * Costruttore
-    */
+    /**
+     * 
+     * @param annotazione Lista delle annotazioni di una classe
+     * @param modificatore Modificatore del campo
+     * @param key Lista delle chiavi del campo
+     * @param tipo Tipo del campo
+     * @param nome Nome del campo
+     */
     public Field(ArrayList<String> annotazione, String modificatore, ArrayList<String> key, String tipo, String nome)
     {
         this.annotazione = annotazione;
@@ -45,11 +51,10 @@ public class Field
         this.nome = nome;
     }
 
-    //GETTER AND SETTER
-    
-    /*
-    * Metodo che ritorna la stringa a partire dalla lista di annotazioni
-    */
+    /**
+     * 
+     * @return Stringa delle annotazioni partendo dalla lista delle annotazioni
+     */
     public String getAnnotazione()
     {
         String annotazioni = "";
@@ -61,27 +66,39 @@ public class Field
             }
         }
         return annotazioni;
-        
     }
-
+    
+    /**
+     * 
+     * @param annotazione 
+     */
     public void setAnnotazione(ArrayList<String> annotazione)
     {
         this.annotazione = annotazione;
     }
 
+    /**
+     * 
+     * @return Stringa del modificatore
+     */
     public String getModificatore()
     {
         return modificatore;
     }
 
+    /**
+     * 
+     * @param modificatore 
+     */
     public void setModificatore(String modificatore)
     {
         this.modificatore = modificatore;
     }
     
-    /*
-    * Metodo che restituisce le chiavi a partire dalla lista di chiavi
-    */
+    /**
+     * 
+     * @return la stringa delle chiavi a partire dalla lista di chiavi
+     */
     public String getKey()
     {
         String chiavi = "";
@@ -96,11 +113,19 @@ public class Field
         return chiavi;
     }
 
+    /**
+     * 
+     * @param key 
+     */
     public void setKey(ArrayList<String> key)
     {
         this.key = key;
     }
 
+    /**
+     * 
+     * @return il tipo del campo
+     */
     public String getTipo()
     {
         return tipo;
@@ -110,12 +135,20 @@ public class Field
     {
         this.tipo = tipo;
     }
-
+    
+    /**
+     * 
+     * @return il nome del campo
+     */
     public String getNome()
     {
         return nome;
     }
 
+    /**
+     * 
+     * @param nome 
+     */
     public void setNome(String nome)
     {
         this.nome = nome;
