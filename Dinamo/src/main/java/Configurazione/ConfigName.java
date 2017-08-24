@@ -15,7 +15,7 @@ public class ConfigName
     
     /*
     *
-    *Nome del Package
+    *Nome del Package Dinamo
     *
     */
     public static final String PKG = "Dinamo";
@@ -32,49 +32,49 @@ public class ConfigName
     *Nome del driver
     *
     */
-    public static final String DRIVER = "driver";
+    public static final String DRIVER = "Driver";
     
     /*
     *
     *Nome dell' ip
     *
     */
-    public static final String IP = "ip";
+    public static final String IP = "Ip";
     
     /*
     *
     *Nome della porta
     *
     */
-    public static final String PORT = "port";
+    public static final String PORT = "Port";
    
     /*
     *
     *Nome dell'username
     *
     */
-    public static final String USERNAME = "username";
+    public static final String USERNAME = "Username";
     
     /*
     *
     *Nome della password
     *
     */
-    public static final String PASSWORD = "password";
+    public static final String PASSWORD = "Password";
     
     /*
     *
     *Nome del database
     *
     */
-    public static final String DATABASE = "database";
+    public static final String DATABASE = "Database";
     
     /*
     *
     *Nome del timezone
     *
     */
-    public static final String TIMEZONE = "timezone";
+    public static final String TIMEZONE = "Timezone";
     
     /*
     *
@@ -85,7 +85,7 @@ public class ConfigName
     
     /*
     *
-    *Parte iniziale fissa del timezone
+    *Nome del file json di configurazione delle Model
     *
     */
     public static final String CONFIG_MODEL = "ModelConfiguration.json";
@@ -114,10 +114,17 @@ public class ConfigName
     
     /*
     *
-    *Nome cartella delle model
+    *Nome della proprietà IGNORE_TABLES
     *
     */
     public static final String IGNORE_TABLES= "IgnoreTables";
+    
+    /*
+    *
+    *Nome della proprietà IGNORE_ANNOTATIONS
+    *
+    */
+    public static final String IGNORE_ANNOTATIONS= "IgnoreAnnotations";
     
     /*
     *
@@ -129,10 +136,17 @@ public class ConfigName
     
     /*
     *
-    *Nome del package Annotazioni
+    *Nome della proprietà TABLE_NAME
     *
     */
     public static final String TABLE_NAME= "TableName";
+    
+    /*
+    *
+    *Nome della proprietà ANNOTATION_NAME
+    *
+    */
+    public static final String ANNOTATION_NAME= "AnnotationName";
     
     /*
     *
@@ -141,6 +155,33 @@ public class ConfigName
     */
     public static final String JAVA_SQL_DATE= "java.sql.Date";
     
+    /*
+    *
+    *Nome della proprietà MAPPING
+    *
+    */
+    public static final String MAPPING= "Mapping";
+    
+    /*
+    *
+    *Nome della proprietà ATTRIBUTE_NAME
+    *
+    */
+    public static final String ATTRIBUTE_NAME= "AttributeName";
+    
+    /*
+    *
+    *Nome della proprietà TYPE
+    *
+    */
+    public static final String TYPE= "Type";
+    
+    /*
+    *
+    *Nome della proprietà TABLE_SPECIFICATION
+    *
+    */
+    public static final String TABLE_SPECIFICATION= "TableSpecification";
     
     
     

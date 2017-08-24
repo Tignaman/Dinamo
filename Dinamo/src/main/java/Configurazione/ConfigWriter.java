@@ -38,8 +38,12 @@ public class ConfigWriter
         /*Viene aggiunta la proprietà MODEL_PATH*/
         modelConfig.addProperty(ConfigName.MODEL_PATH,"");
         
+        
+        /***********************************************************************************************************************************************/
+        
+        
         /*Viene creato il JsonArray della lista di tabelle da escludere*/
-        JsonArray listaDaEscludere = new JsonArray();
+        JsonArray listaTabelleDaEscludere = new JsonArray();
         
         /*Viene aggiunto un JsonObject come linea guida*/
         JsonObject tabellaDaEscludere = new JsonObject();
@@ -48,11 +52,60 @@ public class ConfigWriter
         tabellaDaEscludere.addProperty(ConfigName.TABLE_NAME, "");
         
         /*Viene aggiunto il JsonObject al JsonArray*/
-        listaDaEscludere.add(tabellaDaEscludere);
+        listaTabelleDaEscludere.add(tabellaDaEscludere);
         
-        /*VIene aggiunta la proprietà IGNORE_TABLES*/
-        modelConfig.add(ConfigName.IGNORE_TABLES, listaDaEscludere);
+        /*Viene aggiunta la proprietà IGNORE_TABLES*/
+        modelConfig.add(ConfigName.IGNORE_TABLES, listaTabelleDaEscludere);
         
+        
+        /***********************************************************************************************************************************************/
+        
+        
+        /*Viene creato il JsonArray della lista di annotazione da escludere*/
+        JsonArray listaAnnotazioniDaEscludere = new JsonArray();
+        
+        /*Viene aggiunto un JsonObject come linea guida*/
+        JsonObject annotazioneDaEscludere = new JsonObject();
+        
+        /*Viene aggiunto al JsonObjhect la prorietà ANNOTATION_NAME*/
+        annotazioneDaEscludere.addProperty(ConfigName.ANNOTATION_NAME, "");
+        
+        /*Viene aggiunto il JsonObject al JsonArray*/
+        listaAnnotazioniDaEscludere.add(annotazioneDaEscludere);
+        
+        /*Viene aggiunta la proprietà IGNORE_ANNOTATIONS*/
+        modelConfig.add(ConfigName.IGNORE_ANNOTATIONS, listaAnnotazioniDaEscludere);
+        
+        /*Viene creato il JsonArray della lista dei dettagli delle tabelle*/ 
+        JsonArray tableSpefication = new JsonArray();
+        
+        /*Viene aggiunto un JsonObject come linea guida*/
+        JsonObject tabella = new JsonObject();
+        
+        /*Aggiungiamo la proprietà TABLE_NAME all'oggetto tabella*/
+        tabella.addProperty(ConfigName.TABLE_NAME,"");
+        
+        /*Creiamo l'array di mapping*/
+        JsonArray listaMapping = new JsonArray();
+        
+        /*Creiamo l'oggetto di mapping*/
+        JsonObject mapping = new JsonObject();
+        
+        /*Aggiungiamo a questo la proprietà ATTRIBUTE_NAME e TYPE*/
+        mapping.addProperty(ConfigName.ATTRIBUTE_NAME,"");
+        mapping.addProperty(ConfigName.TYPE, "");
+        
+        /*Aggiungiamo il mapping alla lista dei mapping*/
+        listaMapping.add(mapping);
+        
+        /*Aggiungiamo la lista all'oggetto tabella*/
+        tabella.add(ConfigName.MAPPING,listaMapping);
+        
+        /*Aggiungiamo tabella all'oggetto table specification*/
+        tableSpefication.add(tabella);
+        
+        /*Viene aggiunta la proprietà TABLE_SPECIFICATION*/
+        modelConfig.add(ConfigName.TABLE_SPECIFICATION, tableSpefication);
         
         return modelConfig;
     }

@@ -2,6 +2,8 @@ package Utility;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.BufferedReader;
@@ -41,9 +43,7 @@ public class Utility
             {
                 fileWriter.close();
             }
-            
         }
-        
     }
     
     /*Funzione che viene utilizzata per trasformare un file json in un JsonObject, passando come parametro il percorso*/
@@ -65,7 +65,6 @@ public class Utility
             ex.printStackTrace();
             return null;
         }
-        
     }
     
     /*
@@ -109,5 +108,20 @@ public class Utility
         File sourceFile = new File(root, "/"+nomeClasse+".java");
         sourceFile.getParentFile().mkdirs();
         Files.write(sourceFile.toPath(), source.getBytes(StandardCharsets.UTF_8));
+    }
+    
+    /*
+    * Funzione utilizzata per controllare se in un JsonArray è presente una strigna
+    */
+    public static boolean isPresent(JsonArray ja,String p, String check)
+    {
+        for(JsonElement je : ja)
+        {
+            if(je.getAsJsonObject().get(p).getAsString().equals(check))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

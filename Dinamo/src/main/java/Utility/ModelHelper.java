@@ -5,6 +5,8 @@ import Configurazione.ConfigHelper;
 import Configurazione.ConfigModel;
 import Configurazione.ConfigName;
 import static Utility.Utility.creaFileJava;
+import static Utility.Utility.isPresent;
+import static ascompany.dinamo.GestoreModel.DBConfigFile;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -233,6 +235,27 @@ public class ModelHelper
     */
      public ModelHelper addParameters(JsonArray metadataTabella)
     {
+        /*Viene preso il JsonArray nella quale sono specificate le annotazioni da dover ignorare*/
+        JsonArray tableSpefication = DBConfigFile.get(ConfigName.TABLE_SPECIFICATION).getAsJsonArray();
+        
+        /*Viene creato l'oggetto che conterrà il JsonMapping*/
+        JsonArray mappingTable = new JsonArray();
+        
+        System.out.println("TABLE SPECIFICATION DEL FILE DI CONFIGURAZIONE" + tableSpefication);
+        System.out.println("TABELLA CORRENTE: " + this.nomeTabella);
+        
+        boolean tableSpecificated = false;
+        for(JsonElement table : tableSpefication)
+        {
+            if(table.getAsJsonObject().get(ConfigName.TABLE_NAME).getAsString().toLowerCase().equals(this.nomeTabella.toLowerCase()))
+            {
+                mappingTable = table.getAsJsonObject().get(ConfigName.MAPPING).getAsJsonArray();
+                tableSpecificated = true;
+            }
+        }
+        
+        
+
         ArrayList<String> campiCreati = new ArrayList<>();
 
         for(JsonElement je : metadataTabella)
@@ -248,7 +271,17 @@ public class ModelHelper
             }
             if(!found)
             {
-                addParamater(new Field(addAnnotation(jo),ConfigModel.PUBLIC, null, ConfigModel.TYPE_MAPPING.get(jo.get("data_type").getAsString()),jo.get("column_name").getAsString()));            
+                String tipo = ConfigModel.TYPE_MAPPING.get(jo.get("data_type").getAsString());
+                for(JsonElement jmap : mappingTable)
+                {
+                    if(jmap.getAsJsonObject().get(ConfigName.ATTRIBUTE_NAME).getAsString().toLowerCase().equals(jo.get("column_name").getAsString().toLowerCase()))
+                    {
+                        System.out.println("IL CAMPO " + jo.get("column_name").getAsString() + " ha un mapping diverso da quello normale");
+                        tipo = jmap.getAsJsonObject().get(ConfigName.TYPE).getAsString();
+                    }
+                }
+                
+                addParamater(new Field(addAnnotation(jo),ConfigModel.PUBLIC, null, tipo ,jo.get("column_name").getAsString()));            
                 campiCreati.add(jo.get("column_name").getAsString());
             }
         }
@@ -260,29 +293,46 @@ public class ModelHelper
      */
      public ArrayList<String> addAnnotation(JsonObject jo)
      {
+        /*Viene preso il JsonArray nella quale sono specificate le annotazioni da dover ignorare*/
+        JsonArray ignoreAnnotations = DBConfigFile.get(ConfigName.IGNORE_ANNOTATIONS).getAsJsonArray();
+        
         ArrayList<String> listaAnnotazioni = new ArrayList<>();
+        
         
         if(jo.get("column_key").getAsString().equals("PRI"))
         {
-            listaAnnotazioni.add("@PrimaryKey");
+            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"PrimaryKey"))
+            {
+                listaAnnotazioni.add("@PrimaryKey");
+            }
         }
-        
         if(jo.get("column_key").getAsString().equals("UNI"))
         {
-            listaAnnotazioni.add("@Unique");
+            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"Unique"))
+            {
+                listaAnnotazioni.add("@Unique");
+            }
         }
-        
         if(jo.get("is_nullable").getAsString().equals("NO"))
         {
-            listaAnnotazioni.add("@NotNullable");
+            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"NotNullable"))
+            {
+                listaAnnotazioni.add("@NotNullable");
+            }
         }
         if(jo.get("extra").getAsString().equals("auto_increment"))
         {
-            listaAnnotazioni.add("@AutoIncrement");
+            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"AutoIncrement"))
+            {
+                listaAnnotazioni.add("@AutoIncrement");
+            }
         }
         if(!jo.get("referenced_table_name").getAsString().equals("null"))
         {
-            listaAnnotazioni.add("@ForeignKey(table=\""+jo.get("referenced_table_name").getAsString()+"\",column=\""+ jo.get("referenced_column_name").getAsString() +"\")");
+            if(!isPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"ForeignKey"))
+            {
+                listaAnnotazioni.add("@ForeignKey(table=\""+jo.get("referenced_table_name").getAsString()+"\",column=\""+ jo.get("referenced_column_name").getAsString() +"\")");
+            }
         }
         return listaAnnotazioni;
      }
