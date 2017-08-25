@@ -347,6 +347,12 @@ public class ModelHelper
             if(!found)
             {
                 String tipo = ConfigModel.TYPE_MAPPING.get(jo.get("data_type").getAsString());
+                if(tipo == null)
+                {
+                    throw new Exception("Type: " + jo.get("data_type").getAsString() + " not present");
+                    
+                }
+                
                 String customPackage = "";
                 JsonArray customAnnotation = new JsonArray();
                 

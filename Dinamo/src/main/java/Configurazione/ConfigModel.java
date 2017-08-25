@@ -85,6 +85,7 @@ public class ConfigModel
         put("date" , "Date");
         put("datetime" , "Date");
         put("timestamp", "Date");
+        put("time","Date");
     }};
     
     /**
