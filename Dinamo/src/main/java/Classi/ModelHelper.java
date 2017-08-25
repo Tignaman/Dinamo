@@ -371,7 +371,7 @@ public class ModelHelper
                         isBaseType = true;
                     }
                 }
-                if(isBaseType == false)
+                if(isBaseType == false && !customPackage.equals(""))
                 {
                     this.importString += ConfigModel.IMPORT +" "+ customPackage +"."+ tipo +";" + newLine(1) ;
                 }
@@ -430,8 +430,12 @@ public class ModelHelper
         }
         for(JsonElement je : customAnnotation)
         {
-            listaAnnotazioni.add("@"+je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString());
-            this.importString += ConfigModel.IMPORT +" "+ je.getAsJsonObject().get(ConfigName.PACKAGE).getAsString() +"."+ je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString() +";" + newLine(1) ;   
+            if(!je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString().equals(""))
+            {
+                listaAnnotazioni.add("@"+je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString());
+                this.importString += ConfigModel.IMPORT +" "+ je.getAsJsonObject().get(ConfigName.PACKAGE).getAsString() +"."+ je.getAsJsonObject().get(ConfigName.ANNOTATION_NAME).getAsString() +";" + newLine(1) ;   
+            }
+            
         }
         return listaAnnotazioni;
      }
