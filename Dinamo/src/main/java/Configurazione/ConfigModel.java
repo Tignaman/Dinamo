@@ -97,7 +97,8 @@ public class ConfigModel
         "double",
         "String",
         "char",
-        "boolean"
+        "boolean",
+        "Date"
     ));
     
 }
