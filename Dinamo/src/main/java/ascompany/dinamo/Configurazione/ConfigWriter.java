@@ -1,4 +1,4 @@
-package Configurazione;
+package ascompany.dinamo.Configurazione;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

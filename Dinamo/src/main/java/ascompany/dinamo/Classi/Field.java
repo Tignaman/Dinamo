@@ -1,4 +1,4 @@
-package Classi;
+package ascompany.dinamo.Classi;
 
 import java.util.ArrayList;
 

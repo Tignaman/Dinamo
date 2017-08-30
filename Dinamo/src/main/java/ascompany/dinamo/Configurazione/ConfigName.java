@@ -1,4 +1,4 @@
-package Configurazione;
+package ascompany.dinamo.Configurazione;
 
 /**
  *
@@ -10,6 +10,11 @@ public class ConfigName
      * Punto di partenza all'interno del progetto dove verrà creato il package DINAMO
      */
     public static final String SORGENTE = "src";
+    
+    /**
+     * Package di base dove c'è il codice sorgente
+     */
+    public static final String BASE_PACKAGE = "ascompany.dinamo";
     
     /**
      * Nome del package DINAMO

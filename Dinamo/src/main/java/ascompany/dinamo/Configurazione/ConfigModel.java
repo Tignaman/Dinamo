@@ -1,4 +1,4 @@
-package Configurazione;
+package ascompany.dinamo.Configurazione;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package Annotazioni;
+package ascompany.dinamo.Annotazioni;
 
 /**
  * Interfaccia che indica se un campo ha l'auto increment

@@ -1,6 +1,6 @@
-package Configurazione;
+package ascompany.dinamo.Configurazione;
 
-import Configurazione.ConfigName;
+import ascompany.dinamo.Configurazione.ConfigName;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,7 +1,7 @@
-package Preprocessore;
+package ascompany.dinamo.Preprocessore;
 
-import Annotazioni.DinamoBootstrap;
-import Configurazione.ConfigHelper;
+import ascompany.dinamo.Annotazioni.DinamoBootstrap;
+import ascompany.dinamo.Configurazione.ConfigHelper;
 import static ascompany.dinamo.GestoreDB.establishingConnection;
 import static ascompany.dinamo.GestoreModel.GeneraModel;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import javax.lang.model.element.TypeElement;
  * 
  * @author m.castano
  */
-@SupportedAnnotationTypes("Annotazioni.DinamoBootstrap")
+@SupportedAnnotationTypes("ascompany.dinamo.Annotazioni.DinamoBootstrap")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class ProcessoreAnnotazioni extends AbstractProcessor
 {

@@ -1,13 +1,13 @@
-package Classi;
+package ascompany.dinamo.Classi;
 
-import Configurazione.ConfigHelper;
-import Configurazione.ConfigModel;
-import Configurazione.ConfigName;
-import Preprocessore.ProcessoreAnnotazioni;
-import Utility.Utility;
-import static Utility.Utility.creaFileJava;
-import static Utility.Utility.isClassPresent;
-import static Utility.Utility.isStringPresent;
+import ascompany.dinamo.Configurazione.ConfigHelper;
+import ascompany.dinamo.Configurazione.ConfigModel;
+import ascompany.dinamo.Configurazione.ConfigName;
+import ascompany.dinamo.Preprocessore.ProcessoreAnnotazioni;
+import ascompany.dinamo.Utility.Utility;
+import static ascompany.dinamo.Utility.Utility.creaFileJava;
+import static ascompany.dinamo.Utility.Utility.isClassPresent;
+import static ascompany.dinamo.Utility.Utility.isStringPresent;
 import static ascompany.dinamo.GestoreModel.DBConfigFile;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -102,8 +102,8 @@ public class ModelHelper
      */
     public void addDependencies()
     {
-        this.importString += ConfigModel.IMPORT +" "+ ConfigName.ANNOTAZIONI+".*;" + newLine(1) ;
-        this.importString += ConfigModel.IMPORT +" "+ ConfigName.JAVA_SQL_DATE+";" + newLine(1) ;
+        this.importString += ConfigModel.IMPORT +" "+ ConfigName.BASE_PACKAGE +"."+ ConfigName.ANNOTAZIONI+".*;" + newLine(1) ;
+        this.importString += ConfigModel.IMPORT +" "+ ConfigName.JAVA_SQL_DATE +";"+ newLine(1) ;
     }
     
     /**

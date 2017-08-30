@@ -1,4 +1,4 @@
-package Annotazioni;
+package ascompany.dinamo.Annotazioni;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

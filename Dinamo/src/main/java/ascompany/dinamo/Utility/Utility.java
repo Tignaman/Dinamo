@@ -1,4 +1,4 @@
-package Utility;
+package ascompany.dinamo.Utility;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

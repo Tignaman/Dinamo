@@ -1,5 +1,6 @@
-package Database;
+package ascompany.dinamo.Database;
 
+import ascompany.sinfonia.Core.QueryCore;
 import java.util.List;
 
 /**
