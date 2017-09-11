@@ -1,3 +1,3 @@
 # Dinamo
 
-*test
+## Test
