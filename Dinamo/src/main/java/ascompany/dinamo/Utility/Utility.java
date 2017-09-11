@@ -111,21 +111,7 @@ public class Utility
         return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
     
-    /**
-     * Funzione utilizzata per creare il file .java
-     * 
-     * @param nomeClasse nome del file da dover creare
-     * @param source stringa contenente il codice sorgente
-     * @param path percorso di creazioen
-     * @throws Exception 
-     */
-    public static void creaFileJava(String nomeClasse, String source, String path) throws Exception
-    {
-        File root = new File(path);
-        File sourceFile = new File(root, "/"+nomeClasse+".java");
-        sourceFile.getParentFile().mkdirs();
-        Files.write(sourceFile.toPath(), source.getBytes(StandardCharsets.UTF_8));
-    }
+    
     
     /**
      * Funzione utilizzata per controllare se in un JsonArray è presente una strigna
@@ -163,5 +149,21 @@ public class Utility
         {
             return false;
         }
+    }
+    
+    /**
+     * Funzione utilizzata per creare il file .java
+     * 
+     * @param nomeClasse nome del file da dover creare
+     * @param source stringa contenente il codice sorgente
+     * @param path percorso di creazioen
+     * @throws Exception 
+     */
+    public static void creaFileJava(String nomeClasse, String source, String path) throws Exception
+    {
+        File root = new File(path);
+        File sourceFile = new File(root, "/"+nomeClasse+".java");
+        sourceFile.getParentFile().mkdirs();
+        Files.write(sourceFile.toPath(), source.getBytes(StandardCharsets.UTF_8));
     }
 }
