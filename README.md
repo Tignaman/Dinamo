@@ -12,7 +12,7 @@ Unlike other libraries, Dinamo does not want to give precise rules to follow, bu
 * **[Cosmo](https://github.com/Jaaaas/Cosmo)**
 
 Today, Dinamo focuses mainly on database communication. We can say that it allows a circular mapping of database tables and offers a complete and configurable query management. 
-Through an annotation processor, Dinamo lets you map the tables of an existing database with java classes. At the moment, you have already thought of ways to configure this mapping so that you do not always have to make the same changes as the classes are regenerated.
+Through an annotation processor, Dinamo lets you map the tables of an existing database with java classes. At the moment, we have already thought of ways to configure this mapping so that you do not always have to make the same changes as the classes are regenerated.
 
 Dinamo and its modules are still under testing, but can still be used in a project. However, support must be added to the different types of RDBMS.
 
