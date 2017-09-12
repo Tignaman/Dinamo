@@ -63,6 +63,13 @@
             <type>jar</type>
         </dependency>
         
+        <dependency>
+            <groupId>AsCompany</groupId>
+            <artifactId>cosmo</artifactId>
+            <version>1.0.0</version>
+            <type>jar</type>
+        </dependency>
+        
     </dependencies>
     
 </project>
