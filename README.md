@@ -246,7 +246,7 @@ Thanks to Dinamo's internal modules, we can start creating queries through **[Co
 
 ### Related project
 * **[Cosmo](https://github.com/Jaaaas/Cosmo)**
-**[Sinfonia](https://github.com/Jaaaas/Sinfonia/)**
+* **[Sinfonia](https://github.com/Jaaaas/Sinfonia/)**
 
 ### Contributors
 * **[suxl89](https://github.com/suxl89)**
