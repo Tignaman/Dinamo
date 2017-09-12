@@ -10,7 +10,6 @@ import ascompany.dinamo.Classi.ModelHelper;
 import ascompany.dinamo.Utility.Utility;
 import static ascompany.dinamo.Utility.Utility.capitalizeFirstLetter;
 import static ascompany.dinamo.Utility.Utility.deleteDir;
-import static ascompany.dinamo.Utility.Utility.getStringAfterLastChar;
 import ascompany.sinfonia.Core.DatabaseUtility;
 import ascompany.sinfonia.Core.QueryCore;
 import com.google.gson.JsonArray;
@@ -115,9 +114,6 @@ public class GestoreModel
                 .mapping(new DatabaseUtility().rsToJson)
                 .destroy()
                 .getResponse();
-        
-        System.out.println(ConfigHelper.basePath + "/" +ConfigHelper.basePackage);
-        
         
         new ModelHelper()
                 .toPackage(ConfigHelper.basePackage.replace("/", "."))

@@ -1,6 +1,5 @@
 package ascompany.dinamo;
 
-import ascompany.dinamo.Configurazione.ConfigName;
 import ascompany.dinamo.Configurazione.ConfigWriter;
 import ascompany.dinamo.Configurazione.ConfigHelper;
 import static ascompany.dinamo.Configurazione.ConfigHelper.mandatoryDBConnectionParam;
@@ -9,7 +8,6 @@ import ascompany.sinfonia.Core.ConnectionCore;
 import com.google.gson.JsonObject;
 import java.io.File;
 import java.sql.Connection;
-import java.sql.DriverManager;
 
 /**
  *
