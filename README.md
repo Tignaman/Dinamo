@@ -120,8 +120,7 @@ Explain it by keys.
 
 ```json
 {
-    "ModelPath": "CosmoModels",
-    ...
+    "ModelPath": "CosmoModels"
 }
 ```
 *Full package starting from src folder must be specified*
@@ -236,3 +235,29 @@ In this case **@PrimaryKey** annotation won't be used during mapping process.
     ]
 ```
 *Package: full package starting from src folder must be specified*
+
+### Creation phase
+
+After filling both files (for **ModelConfiguration** file only *ModelPackage* is required), we build the project.
+Now we should see in the specified path all the java classes.
+
+Thanks to Dinamo's internal modules, we can start creating queries through **[Cosmo](https://github.com/Jaaaas/Cosmo)**, and perform them through **[Sinfonia](https://github.com/Jaaaas/Sinfonia/)** considering the classes created by Dinamo.
+
+
+### Related project
+* **[Cosmo](https://github.com/Jaaaas/Cosmo)**
+**[Sinfonia](https://github.com/Jaaaas/Sinfonia/)**
+
+### Contributors
+* **[suxl89](https://github.com/suxl89)**
+* **[Nazzareno Di Pietro](https://github.com/Tignaman)**
+* **[fpafumi](https://github.com/fpafumi)**
+
+### Future developments
+
+* **Testing**
+* **Support for different RDBMS**
+* **Maven integration**
+* **New mapping operation (extends, implements, compless annotation )**
+* **New modules integration**
+* **Improves performance**
