@@ -33,7 +33,7 @@ public class ConfigWriter
     public static JsonObject ModelConfigWriter()
     {
         JsonObject modelConfig = new JsonObject();
-        modelConfig.addProperty(ConfigName.MODEL_PATH,"");
+        modelConfig.addProperty(ConfigName.MODEL_PACKAGE,"");
         
         
         /***********************************************************************************************************************************************/

@@ -24,7 +24,7 @@ public class ConfigHelper
      */
     public static ArrayList<String> mandatoryModelConfigParam = new ArrayList<>(Arrays.asList
     (
-        ConfigName.MODEL_PATH
+        ConfigName.MODEL_PACKAGE
     ));
     
     /**
@@ -64,7 +64,7 @@ public class ConfigHelper
      */
     public static String getPercorsoModel() throws IOException
     {
-        return ConfigHelper.basePackage+ "/" + ConfigName.PKG + "/" + ConfigName.MODEL_DIR ;
+        return ConfigHelper.basePath + "/" + ConfigHelper.basePackage; //+ "/" + ConfigName.PKG + "/" + ConfigName.MODEL_DIR ;
     }
     
     

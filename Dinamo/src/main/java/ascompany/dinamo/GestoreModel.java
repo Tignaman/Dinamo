@@ -54,7 +54,7 @@ public class GestoreModel
                    }
                 }
                 
-                ConfigHelper.basePackage = DBConfigFile.get(ConfigName.MODEL_PATH).getAsString();
+                ConfigHelper.basePackage = DBConfigFile.get(ConfigName.MODEL_PACKAGE).getAsString();
                 file = new File(ConfigHelper.getPercorsoModel());
                 if(file.exists())
                 {
@@ -116,8 +116,11 @@ public class GestoreModel
                 .destroy()
                 .getResponse();
         
+        System.out.println(ConfigHelper.basePath + "/" +ConfigHelper.basePackage);
+        
+        
         new ModelHelper()
-                .toPackage(getStringAfterLastChar(ConfigHelper.basePackage,"\\") +"."+ ConfigName.PKG +"."+ ConfigName.MODEL_DIR)
+                .toPackage(ConfigHelper.basePackage.replace("/", "."))
                 .withAccessMode(ConfigModel.PUBLIC)
                 .withKey(ConfigModel.CLASS)
                 .className(capitalizeFirstLetter(nomeTab.toLowerCase()))

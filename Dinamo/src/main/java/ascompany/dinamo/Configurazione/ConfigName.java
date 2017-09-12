@@ -79,7 +79,7 @@ public class ConfigName
     /**
      * Nome della Proprietà MODEL_PATH
      */
-    public static final String MODEL_PATH= "ModelPath";
+    public static final String MODEL_PACKAGE= "ModelPackage";
     
     /**
      * Nome della cartella delle model

@@ -15,5 +15,5 @@ public @interface DinamoBootstrap
      * 
      * @return percorso dove verranno creati i file di configurazione
      */
-    String path();
+    String basePath();
 }

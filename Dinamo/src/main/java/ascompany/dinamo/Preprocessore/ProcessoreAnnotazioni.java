@@ -46,7 +46,7 @@ public class ProcessoreAnnotazioni extends AbstractProcessor
                 for (Element elem : roundEnv.getElementsAnnotatedWith(DinamoBootstrap.class)) 
                 {
                     DinamoBootstrap dinamoBootstrap = elem.getAnnotation(DinamoBootstrap.class);
-                    ConfigHelper.basePath = dinamoBootstrap.path();
+                    ConfigHelper.basePath = dinamoBootstrap.basePath();
                 }
                 Connection connection = establishingConnection();
                 GeneraModel(connection);
