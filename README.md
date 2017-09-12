@@ -19,7 +19,8 @@ Dinamo and its modules are still under testing, but can still be used in a proje
 ## Getting Started
 
 ### Prerequisites
-In order to use Sinfonia you simply need to import the **JAR** into the project and you can use its features.
+In order to use Sinfonia you simply need to import the **JAR** 
+(you can download it from here [Dinamo](https://github.com/Tignaman/Dinamo/files/1296115/Dinamo-1.0.zip) or from the releases) into the project and you can use its features.
 
 ### Features
 Dinamo has an **annotation processor** that use **@DinamoBootstrap** annotation.
