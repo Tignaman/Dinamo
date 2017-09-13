@@ -125,7 +125,7 @@ Explain it by keys.
 
 ```json
 {
-    "ModelPath": "CosmoModels"
+    "ModelPath": "DinamoModels"
 }
 ```
 *Full package starting from src folder must be specified*
