@@ -12,12 +12,17 @@ Unlike other libraries, Dinamo does not want to give precise rules to follow, bu
 * **[Cosmo](https://github.com/Jaaaas/Cosmo)**
 
 Today, Dinamo focuses mainly on database communication. We can say that it allows a circular mapping of database tables and offers a complete and configurable query management. 
-Through an annotation processor, Dinamo lets you map the tables of an existing database with java classes. At the moment, you have already thought of ways to configure this mapping so that you do not always have to make the same changes as the classes are regenerated.
+Through an annotation processor, Dinamo lets you map the tables of an existing database with java classes. At the moment, we have already thought of ways to configure this mapping so that you do not always have to make the same changes as the classes are regenerated.
 
 Dinamo and its modules are still under testing, but can still be used in a project. However, support must be added to the different types of RDBMS.
 
 ## Getting Started
 
+### Prerequisites
+In order to use Sinfonia you simply need to import the **JAR** 
+(you can download it from here [Dinamo](https://github.com/Tignaman/Dinamo/files/1296115/Dinamo-1.0.zip) or from the releases) into the project and you can use its features.
+
+### Features
 Dinamo has an **annotation processor** that use **@DinamoBootstrap** annotation.
 
 ```java
@@ -120,7 +125,7 @@ Explain it by keys.
 
 ```json
 {
-    "ModelPath": "CosmoModels"
+    "ModelPath": "DinamoModels"
 }
 ```
 *Full package starting from src folder must be specified*
@@ -171,8 +176,8 @@ In this case **@PrimaryKey** annotation won't be used during mapping process.
             "Mapping": 
             [
                 {
-                    "AttributeName": "name",
-                    "Type": "int",
+                    "AttributeName": "age",
+                    "Type": "String",
                     "Package": "",
                     "CustomAnnotation": 
                     [
@@ -196,8 +201,8 @@ In this case **@PrimaryKey** annotation won't be used during mapping process.
             [
                 {
                     "AttributeName": "name",
-                    "Type": "MyCustomObject",
-                    "Package": "PackageWhereCustomObjectIs",
+                    "Type": "MyCustomType",
+                    "Package": "PackageWhereMyCustomTypeIs",
                     "CustomAnnotation": 
                     [
                         {
@@ -220,8 +225,8 @@ In this case **@PrimaryKey** annotation won't be used during mapping process.
             [
                 {
                     "AttributeName": "name",
-                    "Type": "MyCustomObject",
-                    "Package": "PackageWhereCustomObjectIs",
+                    "Type": "MyCustomType",
+                    "Package": "PackageWhereMyCustomType",
                     "CustomAnnotation": 
                     [
                         {
