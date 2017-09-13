@@ -176,8 +176,8 @@ In this case **@PrimaryKey** annotation won't be used during mapping process.
             "Mapping": 
             [
                 {
-                    "AttributeName": "name",
-                    "Type": "int",
+                    "AttributeName": "age",
+                    "Type": "String",
                     "Package": "",
                     "CustomAnnotation": 
                     [
@@ -201,8 +201,8 @@ In this case **@PrimaryKey** annotation won't be used during mapping process.
             [
                 {
                     "AttributeName": "name",
-                    "Type": "MyCustomObject",
-                    "Package": "PackageWhereCustomObjectIs",
+                    "Type": "MyCustomType",
+                    "Package": "PackageWhereMyCustomTypeIs",
                     "CustomAnnotation": 
                     [
                         {
@@ -225,8 +225,8 @@ In this case **@PrimaryKey** annotation won't be used during mapping process.
             [
                 {
                     "AttributeName": "name",
-                    "Type": "MyCustomObject",
-                    "Package": "PackageWhereCustomObjectIs",
+                    "Type": "MyCustomType",
+                    "Package": "PackageWhereMyCustomType",
                     "CustomAnnotation": 
                     [
                         {
