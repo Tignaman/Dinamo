@@ -115,10 +115,51 @@ public class GestoreModel
                 .destroy()
                 .getResponse();
         
+        /*
+        * Gestione delle custom interface per costruire la stringa da passare al costruttore ModelHelper
+        */
+        JsonArray tableSpecification = DBConfigFile.get(ConfigName.TABLE_SPECIFICATION).getAsJsonArray();
+        String interfaceList = "";
+        String extendsString = "";
+        
+        ArrayList<String> pkg = new ArrayList<>();
+        if(tableSpecification.size() > 0)
+        {
+            for(JsonElement je : tableSpecification)
+            {
+                JsonObject jo = je.getAsJsonObject();
+                if(jo.get(ConfigName.TABLE_NAME).getAsString().toLowerCase().equals(nomeTab.toLowerCase()))
+                {
+                    JsonArray customInterface = jo.get(ConfigName.CUSTOM_INTERFACE).getAsJsonArray();
+                    for(JsonElement interfaceItem : customInterface)
+                    {
+                        JsonObject item = interfaceItem.getAsJsonObject();
+                        if(!item.get(ConfigName.INTERFACE_NAME).getAsString().equals("") && !item.get(ConfigName.PACKAGE).getAsString().equals(""))
+                        {
+                            interfaceList += item.get(ConfigName.INTERFACE_NAME).getAsString()+",";
+                            pkg.add(item.get(ConfigName.PACKAGE).getAsString() +"."+ item.get(ConfigName.INTERFACE_NAME).getAsString());
+                        }
+                    }
+                    
+                    JsonObject extending = jo.get(ConfigName.EXTEND).getAsJsonObject();
+                    if(!extending.get(ConfigName.CLASS).getAsString().equals("") && !extending.get(ConfigName.PACKAGE).getAsString().equals(""))
+                    {
+                        extendsString = extending.get(ConfigName.CLASS).getAsString();
+                        pkg.add(extending.get(ConfigName.PACKAGE).getAsString() +"."+ extending.get(ConfigName.CLASS).getAsString());
+                        
+                    }
+                }
+            }
+        }
+        
+        
         new ModelHelper()
+                .addDependency(pkg)
                 .toPackage(ConfigHelper.basePackage.replace("/", "."))
                 .withAccessMode(ConfigModel.PUBLIC)
                 .withKey(ConfigModel.CLASS)
+                .extending(extendsString)
+                .implementing(interfaceList)
                 .className(capitalizeFirstLetter(nomeTab.toLowerCase()))
                 .addParameters(metadataTabella)
                 .addGetterAndSetter()

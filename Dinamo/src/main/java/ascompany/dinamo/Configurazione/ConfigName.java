@@ -114,6 +114,11 @@ public class ConfigName
     public static final String ANNOTATION_NAME= "AnnotationName";
     
     /**
+     * Nome della proprietà INTERFACE_NAME
+     */
+    public static final String INTERFACE_NAME= "InterfaceName";
+    
+    /**
      * Nome del package java.sql.date
      */
     public static final String JAVA_SQL_DATE= "java.sql.Date";
@@ -148,6 +153,20 @@ public class ConfigName
      */
     public static final String CUSTOM_ANNOTATION= "CustomAnnotation";
     
+    /**
+     * Nome della proprietà CUSTOM_INTERFACE
+     */
+    public static final String CUSTOM_INTERFACE= "CustomInterface";
+    
+    /**
+     * Nome della proprietà EXTEND
+     */
+    public static final String EXTEND= "Extend";
+    
+    /**
+     * Nome della proprietà Class
+     */
+    public static final String CLASS = "Class";
     
 }
 

@@ -62,14 +62,31 @@ public class ConfigWriter
         mapping.addProperty(ConfigName.ATTRIBUTE_NAME,"");
         mapping.addProperty(ConfigName.TYPE, "");
         mapping.addProperty(ConfigName.PACKAGE, "");
+        
         JsonArray listaCustomAnnotations = new JsonArray();
         JsonObject annotation = new JsonObject();
         annotation.addProperty(ConfigName.ANNOTATION_NAME,"");
         annotation.addProperty(ConfigName.PACKAGE,"");
         listaCustomAnnotations.add(annotation);
         mapping.add(ConfigName.CUSTOM_ANNOTATION,listaCustomAnnotations);
+        
         listaMapping.add(mapping);
+        
+        JsonObject extending = new JsonObject();
+        extending.addProperty(ConfigName.CLASS, "");
+        extending.addProperty(ConfigName.PACKAGE, "");
+        
+        tabella.add(ConfigName.EXTEND, extending);
+       
+        JsonArray listaCustomInterfaces = new JsonArray();
+        JsonObject interfaces = new JsonObject();
+        interfaces.addProperty(ConfigName.INTERFACE_NAME, "");
+        interfaces.addProperty(ConfigName.PACKAGE,"");
+        listaCustomInterfaces.add(interfaces);
+        tabella.add(ConfigName.CUSTOM_INTERFACE,listaCustomInterfaces);
+        
         tabella.add(ConfigName.MAPPING,listaMapping);
+        
         tableSpefication.add(tabella);
         modelConfig.add(ConfigName.TABLE_SPECIFICATION, tableSpefication);
         return modelConfig;

@@ -1,5 +1,6 @@
 package ascompany.dinamo.Classi;
 
+import static ascompany.cosmo.utility.Utility.removeLastChar;
 import ascompany.dinamo.Configurazione.ConfigHelper;
 import ascompany.dinamo.Configurazione.ConfigModel;
 import ascompany.dinamo.Configurazione.ConfigName;
@@ -82,6 +83,16 @@ public class ModelHelper
     * Codice sorgente dei setter
     */
     public String setter = "";
+    
+    /**
+     * Codice sorgente delle interfacce
+     */
+    public String interfaces = "";
+    
+    /**
+     * Codice sorgente dell'extends
+     */
+    public String extending = "";
         
     /**
      * 
@@ -102,6 +113,19 @@ public class ModelHelper
     {
         this.importString += ConfigModel.IMPORT +" "+ ConfigName.BASE_PACKAGE +"."+ ConfigName.ANNOTAZIONI+".*;" + newLine(1) ;
         this.importString += ConfigModel.IMPORT +" "+ ConfigName.JAVA_SQL_DATE +";"+ newLine(1) ;
+    }
+
+    /**
+     * Funzione che permette di aggiungere una singola dipendenza
+     */
+    public ModelHelper addDependency(ArrayList<String> listPkg)
+    {
+        for(String p : listPkg)
+        {
+            this.importString += ConfigModel.IMPORT +" "+ p +";" + newLine(1);
+        }
+        return this;
+        
     }
     
     /**
@@ -140,6 +164,23 @@ public class ModelHelper
         return this;
     }
     
+    public ModelHelper extending(String extending)
+    {
+        this.extending = extending;
+        return this;
+    }
+    
+    /**
+     * 
+     * @param interfaces stringa delle interfacce
+     * @return 
+     */
+    public ModelHelper implementing(String interfaces)
+    {
+        this.interfaces = interfaces;
+        return this;
+    }
+    
     /**
      * 
      * @param name nome della classe
@@ -148,9 +189,16 @@ public class ModelHelper
     public ModelHelper className(String name)
     {
         this.nomeTabella = name;
-        this.classNameString += name + newLine(1) + openBracket();
+        this.classNameString += 
+                name + 
+                (extending.length()  > 0? " extends " + extending : "") +
+                (interfaces.length() > 0? " implements " + removeLastChar(interfaces) : "") + 
+                newLine(1) + 
+                openBracket();
         return this;
     }
+    
+    
     
     /**
      * 
@@ -377,8 +425,11 @@ public class ModelHelper
                 }
                 if(isBaseType == false && !customPackage.equals(""))
                 {
-                    this.importString += ConfigModel.IMPORT +" "+ customPackage +"."+ tipo +";" + newLine(1) ;
+                    this.importString += ConfigModel.IMPORT +" "+ customPackage +"."+ tipo +";" + newLine(1);
                 }
+                
+                
+                
                 addParamater(new Field(addAnnotation(jo,customAnnotation),ConfigModel.PUBLIC, null, tipo ,jo.get("column_name").getAsString()));            
                 campiCreati.add(jo.get("column_name").getAsString());
             }
