@@ -1,6 +1,6 @@
 # Dinamo
 
-> **Java 8 library that through the use of annotation processor helps to setup a project with particular focus on database entities.**
+> **Work-in-progress Java 8 library that through the use of annotation processor helps to setup a project with particular focus on database entities.**
 
 ## Overview
 
