@@ -29,14 +29,14 @@ Dinamo has an **annotation processor** that use **@DinamoBootstrap** annotation.
 @Retention(RetentionPolicy.SOURCE)
 public @interface DinamoBootstrap
 {
-    String basePath();
+    String path();
 }
 ```
 **Path** property is the absolute path to src folder where Dinamo configuration package will be created.
 
 Example:
 ```java
-@DinamoBootstrap(basePath="absolute/Path/To/DinamoTest/src")
+@DinamoBootstrap(path="absolute/Path/To/DinamoTest/src")
 public class DinamoTest {}
 ```
 After doing this, simply build the project and under src folder you should see **Dinamo/DinamoConfig** structure.
