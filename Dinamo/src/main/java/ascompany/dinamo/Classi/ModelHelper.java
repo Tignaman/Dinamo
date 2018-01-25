@@ -448,14 +448,14 @@ public class ModelHelper
         JsonArray ignoreAnnotations = DBConfigFile.get(ConfigName.IGNORE_ANNOTATIONS).getAsJsonArray();
         ArrayList<String> listaAnnotazioni = new ArrayList<>();
         
-        if(jo.get("column_key").getAsString().equals("PRI"))
+        if(jo.get("column_key").getAsString().equals("PRI") || jo.get("column_key").getAsString().equals("PK"))
         {
             if(!isStringPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"PrimaryKey"))
             {
                 listaAnnotazioni.add("@PrimaryKey");
             }
         }
-        if(jo.get("column_key").getAsString().equals("UNI"))
+        if(jo.get("column_key").getAsString().equals("UNI") || jo.get("column_key").getAsString().equals("UQ"))
         {
             if(!isStringPresent(ignoreAnnotations,ConfigName.ANNOTATION_NAME,"Unique"))
             {

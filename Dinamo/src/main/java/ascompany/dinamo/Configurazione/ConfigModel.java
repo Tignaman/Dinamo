@@ -76,6 +76,7 @@ public class ConfigModel
     public static final HashMap<String,String> TYPE_MAPPING = new HashMap<String,String>()
     {{
         put("int", "int");
+        put("bit","boolean");
         put("varchar", "String");
         put("tinyint", "boolean");
         put("text" , "String");

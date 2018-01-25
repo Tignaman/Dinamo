@@ -168,5 +168,25 @@ public class ConfigName
      */
     public static final String CLASS = "Class";
     
+    /**
+     * Nome della proprietà tipo database
+     */
+    public static final String TYPE_DATABASE = "TypeDatabase";
+    
+    /**
+     * Nome della proprietà mysql
+     */
+    public static final String MYSQL = "mysql";
+    
+    /**
+     * Nome della proprietà sqlserver
+     */
+    public static final String SQLSERVER = "sqlserver";
+    
+    /**
+     * Nome della proprietà oracle
+     */
+    public static final String ORACLE = "oracle";
+    
 }
 

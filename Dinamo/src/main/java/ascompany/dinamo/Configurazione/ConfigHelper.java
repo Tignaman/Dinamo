@@ -16,7 +16,7 @@ public class ConfigHelper
      */
     public static ArrayList<String> mandatoryDBConnectionParam = new ArrayList<>(Arrays.asList
     (
-       ConfigName.IP,ConfigName.PORT,ConfigName.DRIVER,ConfigName.DATABASE,ConfigName.USERNAME     
+       ConfigName.IP,ConfigName.PORT,ConfigName.DRIVER,ConfigName.DATABASE,ConfigName.USERNAME,ConfigName.TYPE_DATABASE     
     ));
     
     /**

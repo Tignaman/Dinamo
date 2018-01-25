@@ -7,6 +7,8 @@ import ascompany.dinamo.Database.Select;
 import ascompany.dinamo.Configurazione.ConfigHelper;
 import static ascompany.dinamo.Configurazione.ConfigHelper.mandatoryModelConfigParam;
 import ascompany.dinamo.Classi.ModelHelper;
+import ascompany.dinamo.Database.QuerySwitcher;
+import static ascompany.dinamo.GestoreDB.DBConfigFile;
 import ascompany.dinamo.Utility.Utility;
 import static ascompany.dinamo.Utility.Utility.capitalizeFirstLetter;
 import static ascompany.dinamo.Utility.Utility.deleteDir;
@@ -60,7 +62,10 @@ public class GestoreModel
                     deleteDir(file);
                 }
                 file.mkdir();
-                QueryCore qc = Select.getTablesName(new ArrayList<>(Arrays.asList(GestoreDB.DBConfigFile.get(ConfigName.DATABASE).getAsString())));
+                
+                
+                //Select.getTablesName(new ArrayList<>(Arrays.asList(GestoreDB.DBConfigFile.get(ConfigName.DATABASE).getAsString())));
+                QueryCore qc = QuerySwitcher.getDatabaseTable();
                 JsonArray listaTabelle = (JsonArray) qc.init(connection)
                         .buildQuery()
                         .executionQ()
@@ -107,7 +112,8 @@ public class GestoreModel
      */
     public static void creaModel(String nomeTab, Connection connection) throws Exception
     {
-        QueryCore qc = Select.getMetadataFromTable(new ArrayList<>(Arrays.asList(GestoreDB.DBConfigFile.get(ConfigName.DATABASE).getAsString(), nomeTab)));
+        // Select.getMetadataFromTable(new ArrayList<>(Arrays.asList(GestoreDB.DBConfigFile.get(ConfigName.DATABASE).getAsString(), nomeTab)));
+        QueryCore qc = QuerySwitcher.getMetadataTable(nomeTab);
         JsonArray metadataTabella = (JsonArray) qc.init(connection)
                 .buildQuery()
                 .executionQ()

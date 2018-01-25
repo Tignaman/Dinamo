@@ -23,6 +23,7 @@ public class ConfigWriter
         dbConfig.addProperty(ConfigName.PASSWORD, "");
         dbConfig.addProperty(ConfigName.DATABASE, "");
         dbConfig.addProperty(ConfigName.TIMEZONE, "");
+        dbConfig.addProperty(ConfigName.TYPE_DATABASE, "");
         return dbConfig;
     }
     
